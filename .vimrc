@@ -16,3 +16,4 @@ set expandtab
 set tabstop=4
 set smarttab
 set clipboard=unnamed
+set encoding=utf-8
