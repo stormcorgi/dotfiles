@@ -1,5 +1,6 @@
+set encoding=utf-8
+scriptencoding utf-8
 filetype plugin indent on
-syntax on
 set nowrap
 set hlsearch
 set ignorecase
@@ -8,6 +9,7 @@ set autoindent
 set ruler
 set number
 set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 set wildmenu
 set showcmd
 set shiftwidth=4
@@ -16,4 +18,4 @@ set expandtab
 set tabstop=4
 set smarttab
 set clipboard=unnamed
-set encoding=utf-8
+syntax on
