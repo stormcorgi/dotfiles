@@ -34,3 +34,8 @@ myman
 alias tl='toot timeline -r -1'
 alias fav='toot notifications | less'
 alias post='toot post'
+
+
+# 以下は末尾に配置すること。
+# ~/.zshrc.localが存在するときはそちらでオーバーライド
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
