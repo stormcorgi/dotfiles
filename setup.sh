@@ -4,12 +4,12 @@
 git submodule update --init --recursive
 # override zprezto dotfiles
 ln -sf ~/dotfiles/zprezto ~/.zprezto
-ln -sf ~/dotfiles/zsh/zlogin ~/.zpreztorc/runcoms/zlogin
-ln -sf ~/dotfiles/zsh/zlogout ~/.zpreztorc/runcoms/zlogout
-ln -sf ~/dotfiles/zsh/zpreztorc ~/.zpreztorc/runcoms/zpreztorc
-ln -sf ~/dotfiles/zsh/zprofile ~/.zpreztorc/runcoms/zprofile
-ln -sf ~/dotfiles/zsh/zshenv ~/.zpreztorc/runcoms/zshenv
-ln -sf ~/dotfiles/zsh/zshrc ~/.zpreztorc/runcoms/zshrc
+ln -sf ~/dotfiles/zsh/zlogin ~/.zprezto/runcoms/zlogin
+ln -sf ~/dotfiles/zsh/zlogout ~/.zprezto/runcoms/zlogout
+ln -sf ~/dotfiles/zsh/zpreztorc ~/.zprezto/runcoms/zpreztorc
+ln -sf ~/dotfiles/zsh/zprofile ~/.zprezto/runcoms/zprofile
+ln -sf ~/dotfiles/zsh/zshenv ~/.zprezto/runcoms/zshenv
+ln -sf ~/dotfiles/zsh/zshrc ~/.zprezto/runcoms/zshrc
 # prezto symlink in ~/
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
@@ -20,5 +20,5 @@ done
 ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
 
 # change shell
-chsh -s $(which zsh)
+# chsh -s $(which zsh)
 
