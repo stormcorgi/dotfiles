@@ -30,6 +30,8 @@ function myman() {
 }
 myman
 
+## python section
+PATH=$PATH:~/.local/bin
 # toot toot!
 alias tl='toot timeline -r -1'
 alias fav='toot notifications | less'

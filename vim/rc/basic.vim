@@ -37,15 +37,9 @@ set spelllang+=cjk
 noremap <silent> <C-j> :bprev<CR>
 noremap <silent> <C-k> :bnext<CR>
 " swp/backup/undoファイル出力先
-if has ("win64") || has("win32")
-    set directory=C:\\Vimundo
-    set backupdir=C:\\Vimundo
-    set undodir=C:\\Vimundo
-elseif has ("unix")
-    set directory=~/.vim/undo
-    set backupdir=~/.vim/undo
-    set undodir=~/.vim/undo
-endif
+set directory=~/.vim/undo
+set backupdir=~/.vim/undo
+set undodir=~/.vim/undo
 
 
 
