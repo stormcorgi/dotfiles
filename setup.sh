@@ -17,7 +17,7 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
 done
 
 # vim dotfiles
-ln -sf ~/dotfiles/vimrc ~/.vimrc
+ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
 
 # change shell
 chsh -s $(which zsh)
