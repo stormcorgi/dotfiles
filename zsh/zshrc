@@ -13,11 +13,11 @@ fi
 # Customize to your needs...
 autoload -Uz promptinit
 promptinit
-prompt sorin
+prompt clint
 
 cd ~
 
-# offline dictionary 
+# offline dictionary
 function dict() {
     grep $1 /usr/local/share/dict/gene-utf8.txt -A 1 -wi --color
 }
