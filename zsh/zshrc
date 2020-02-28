@@ -29,3 +29,8 @@ function myman() {
     echo " - myman : show this message"
 }
 myman
+
+# toot toot!
+alias tl='toot timeline -r -1'
+alias fav='toot notifications | less'
+alias post='toot post'
