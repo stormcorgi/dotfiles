@@ -25,4 +25,9 @@ if [[ -o INTERACTIVE && -t 2 ]]; then
     print
   fi
 
+  cd ~/dotfiles
+  echo "dot files update check..."
+  git pull
+  cd ~
+
 fi >&2
