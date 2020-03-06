@@ -33,6 +33,8 @@ if [ ! -e ~/.vim/undo ];then
     mkdir -p ~/.vim/undo
 fi
 # Vundle install
+# vim-lsp require ~/.cache/tmp
+mkdir -p ~/.cache/tmp
 if [ ! -e ~/.vim/bundle/Vundle.vim ];then
     echo "~/.vim/bundle/Vundle.vim not fonud. installing..."
     mkdir -p ~/.vim/bundle
@@ -52,7 +54,10 @@ if [ ! -e ~/.dict/ ];then
     cd $CURDIR
 fi
 
+# create local zsh file.
+touch ~/.zshrc.local
+
 # change shell
-# chsh -s $(which zsh)
+chsh -s $(which zsh)
 
 cd $CURDIR
