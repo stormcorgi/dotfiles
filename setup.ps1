@@ -8,6 +8,10 @@ if (!(get-command "scoop.ps1")) {
     echo "scoop is already installed."
 }
 
+# scoop periferals
+scoop update
+scoop install 7zip busybox conemu dark dig innounp peco putty pwsh
+
 
 # peco install
 if (!(get-command "peco.exe")) {
