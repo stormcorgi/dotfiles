@@ -10,6 +10,9 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'osyo-manga/vim-over'
 
 call vundle#end()
 filetype plugin indent on
