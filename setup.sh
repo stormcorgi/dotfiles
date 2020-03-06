@@ -6,11 +6,16 @@
 # - vim
 # - nkf(for dict command)
 
+script_dir=$(cd $(dirname $0); pwd)
+CURDIR=$PWD
+
+cd $script_dir
+
 ## zsh section
 # add submodule
 git submodule update --init --recursive
 # override zprezto dotfiles
-ln -sf ~/dotfiles/zprezto ~/.zprezto
+ln -sf $script_dir/zprezto ~/.zprezto
 # prezto symlink in ~/
 setopt EXTENDED_GLOB
 for rcfile in "${ZDOTDIR:-$HOME}"/dotfiles/zsh/*(.N); do
@@ -21,7 +26,7 @@ echo "zsh initialize section done!"
 
 ## vim section
 # vim dotfiles
-ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
+ln -sf $script_dir/vim/vimrc ~/.vimrc
 # create vim undo / swp / backup target dirctory
 if [ ! -e ~/.vim/undo ];then
     echo "created undo/swp/backup target dir: ~/.vim/undo"
@@ -39,12 +44,15 @@ echo "vim initialize section done!"
 # english -> japanese dictionary data set.
 if [ ! -e ~/.dict/ ];then
     mkdir -p ~/.dict/
+    cd ~/.dict/
     curl -s -O http://www.namazu.org/%7Etsuchiya/sdic/data/gene95.tar.gz
     tar xzf ./gene95.tar.gz
-    nkf gene.txt > ~/.dict/gene-utf8.txt
-    rm -f gene.txt gene95.tar.gz
+    nkf gene.txt > gene-utf8.txt
+    rm -f gene.txt gene95.tar.gz readme.txt
+    cd $CURDIR
 fi
 
 # change shell
 # chsh -s $(which zsh)
 
+cd $CURDIR
