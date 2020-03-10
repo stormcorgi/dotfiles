@@ -19,10 +19,16 @@ set tabstop=4
 set smarttab
 " ヤンクやペースト時クリップボードの内容を使用する
 set clipboard=unnamed,autoselect
-" バッファの自動保存
+" バッファの自動保存 読み込み専用、ファイル名無しでは自動保存時に警告が出る
+" 無視したいので関数でラップ
 set autowrite
-autocmd CursorHold * wall
-autocmd CursorHoldI * wall
+function s:AutoWriteIfPossible()
+    if &modified && !&readonly && bufname('%') !=# '' && &buftype ==# '' && expand("%") !=# ''
+        write
+    endif
+endfunction
+autocmd CursorHold * call s:AutoWriteIfPossible()
+autocmd CursorHoldI * call s:AutoWriteIfPossible()
 "文字コードをUFT-8に設定
 set fenc=utf-8
 " 編集中のファイルが変更されたら自動で読み直す
