@@ -74,10 +74,11 @@ myman
 
 ## python section
 PATH=$PATH:~/.local/bin
+
 # toot toot!
 alias tl='toot timeline -r -1'
 alias fav='toot notifications | less'
-alias post='toot post'
+alias post='toot post -v private '
 
 
 # 以下は末尾に配置すること。
