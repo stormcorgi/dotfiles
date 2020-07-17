@@ -25,9 +25,12 @@ if [[ -o INTERACTIVE && -t 2 ]]; then
     print
   fi
 
-  cd ~/dotfiles
-  echo "dot files update check..."
-  git pull
-  cd ~
+  # update dotfiles 33%
+  if [ $(($RANDOM % 3)) -eq 0  ]; then
+    cd ~/dotfiles
+    echo "dot files update check..."
+    git pull
+    cd ~
+  fi
 
 fi >&2
