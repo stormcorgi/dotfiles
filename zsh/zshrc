@@ -79,7 +79,7 @@ PATH=$PATH:~/.local/bin
 # toot toot!
 alias tl='toot timeline -r -1'
 alias fav='toot notifications | less'
-alias post='toot post -v private '
+alias post='toot post'
 
 
 # 以下は末尾に配置すること。

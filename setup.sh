@@ -66,6 +66,9 @@ fi
 touch ~/.zshrc.local
 
 # change shell
-chsh -s /bin/zsh
+ZSHBINPATH=$(cat /etc/shells | grep zsh | head -n 1)
+if [ $SHELL != $ZSHBINPATH ]; then
+    chsh -s $ZSHBINPATH
+fi
 
 cd $CURDIR
