@@ -5,6 +5,8 @@
 # - curl
 # - vim
 # - nkf(for dict command)
+# - cowsay(for zlogin)
+# - figlet(for zlogin)
 
 script_dir=$(cd $(dirname $0); pwd)
 CURDIR=$PWD
@@ -41,6 +43,12 @@ if [ ! -e ~/.vim/bundle/Vundle.vim ];then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim +PluginInstall +qall
 fi
+
+# Vim colorsheme installation
+mkdir -p ~/.vim/colors
+git clone https://github.com/tomasr/molokai /tmp/molokai
+mv /tmp/molokai/colors/molokai.vim ~/.vim/colors/
+
 echo "vim initialize section done!"
 
 # english -> japanese dictionary data set.
