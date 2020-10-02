@@ -66,6 +66,6 @@ fi
 touch ~/.zshrc.local
 
 # change shell
-chsh -s $(which zsh)
+chsh -s /bin/zsh
 
 cd $CURDIR
