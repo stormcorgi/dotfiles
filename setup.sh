@@ -4,7 +4,6 @@
 # - git
 # - curl
 # - vim
-# - nkf(for dict command)
 # - cowsay(for zlogin)
 # - figlet(for zlogin)
 
@@ -13,6 +12,19 @@ CURDIR=$PWD
 
 cd $script_dir
 
+# install dependency
+## apt
+type apt > /dev/null 2>&1 
+if [ $? -eq 0 ]; then
+   yes | sudo apt install zsh git curl vim cowsay figlet
+
+## apt
+type yum > /dev/null 2>&1 
+if [ $? -eq 0 ]; then
+   yes | sudo yum install -y epel-release
+   yes | sudo yum update
+   yes | sudo yum -y install zsh git curl vim cowsay figlet
+
 ## zsh section
 # add submodule
 git submodule update --init --recursive
@@ -20,9 +32,9 @@ git submodule update --init --recursive
 ln -sf $script_dir/zprezto ~/.zprezto
 # prezto symlink in ~/
 setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/dotfiles/zsh/*(.N); do
-     ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.zprezto/runcoms/${rcfile:t}"
-     ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+for rcfile in "$script_dir"/dotfiles/zsh/*(.N); do
+     ln -sf "$rcfile" "$script_dir/.zprezto/runcoms/${rcfile:t}"
+     ln -sf "$rcfile" "$script_dir/.${rcfile:t}"
 done
 echo "zsh initialize section done!"
 
@@ -48,19 +60,9 @@ fi
 mkdir -p ~/.vim/colors
 git clone https://github.com/tomasr/molokai /tmp/molokai
 mv /tmp/molokai/colors/molokai.vim ~/.vim/colors/
+rm -rf /tmp/molokai
 
 echo "vim initialize section done!"
-
-# english -> japanese dictionary data set.
-if [ ! -e ~/.dict/ ];then
-    mkdir -p ~/.dict/
-    cd ~/.dict/
-    curl -s -O http://www.namazu.org/%7Etsuchiya/sdic/data/gene95.tar.gz
-    tar xzf ./gene95.tar.gz
-    nkf gene.txt > gene-utf8.txt
-    rm -f gene.txt gene95.tar.gz readme.txt
-    cd $CURDIR
-fi
 
 # create local zsh file.
 touch ~/.zshrc.local
