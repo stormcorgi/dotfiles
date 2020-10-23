@@ -6,6 +6,7 @@
 # - vim
 # - cowsay(for zlogin)
 # - figlet(for zlogin)
+# - peco(better cd / Ctrl-R)
 
 script_dir=$(cd $(dirname $0); pwd)
 CURDIR=$PWD
@@ -16,7 +17,8 @@ cd $script_dir
 ## apt
 type apt > /dev/null 2>&1 
 if [ $? -eq 0 ]; then
-   yes | sudo apt install zsh git curl vim cowsay figlet
+   yes | sudo apt install zsh git curl vim cowsay figlet peco
+fi
 
 ## apt
 type yum > /dev/null 2>&1 
@@ -24,6 +26,7 @@ if [ $? -eq 0 ]; then
    yes | sudo yum install -y epel-release
    yes | sudo yum update
    yes | sudo yum -y install zsh git curl vim cowsay figlet
+fi
 
 ## zsh section
 # add submodule
@@ -57,10 +60,12 @@ if [ ! -e ~/.vim/bundle/Vundle.vim ];then
 fi
 
 # Vim colorsheme installation
-mkdir -p ~/.vim/colors
-git clone https://github.com/tomasr/molokai /tmp/molokai
-mv /tmp/molokai/colors/molokai.vim ~/.vim/colors/
-rm -rf /tmp/molokai
+if [ ! -e ~/.vim/colors ];then
+    mkdir -p ~/.vim/colors
+    git clone https://github.com/tomasr/molokai /tmp/molokai
+    mv /tmp/molokai/colors/molokai.vim ~/.vim/colors/
+    rm -rf /tmp/molokai
+fi
 
 echo "vim initialize section done!"
 
@@ -74,3 +79,5 @@ if [ $SHELL != $ZSHBINPATH ]; then
 fi
 
 cd $CURDIR
+
+
