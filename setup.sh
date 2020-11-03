@@ -4,14 +4,29 @@
 # - git
 # - curl
 # - vim
-# - nkf(for dict command)
 # - cowsay(for zlogin)
 # - figlet(for zlogin)
+# - peco(better cd / Ctrl-R)
 
 script_dir=$(cd $(dirname $0); pwd)
 CURDIR=$PWD
 
 cd $script_dir
+
+# install dependency
+## apt
+type apt > /dev/null 2>&1 
+if [ $? -eq 0 ]; then
+   yes | sudo apt install zsh git curl vim cowsay figlet peco
+fi
+
+## apt
+type yum > /dev/null 2>&1 
+if [ $? -eq 0 ]; then
+   yes | sudo yum install -y epel-release
+   yes | sudo yum update
+   yes | sudo yum -y install zsh git curl vim cowsay figlet
+fi
 
 ## zsh section
 # add submodule
@@ -20,9 +35,9 @@ git submodule update --init --recursive
 ln -sf $script_dir/zprezto ~/.zprezto
 # prezto symlink in ~/
 setopt EXTENDED_GLOB
-for rcfile in "${ZDOTDIR:-$HOME}"/dotfiles/zsh/*(.N); do
-     ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.zprezto/runcoms/${rcfile:t}"
-     ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+for rcfile in "$script_dir"/dotfiles/zsh/*(.N); do
+     ln -sf "$rcfile" "$script_dir/.zprezto/runcoms/${rcfile:t}"
+     ln -sf "$rcfile" "$script_dir/.${rcfile:t}"
 done
 echo "zsh initialize section done!"
 
@@ -50,3 +65,5 @@ if [ $SHELL != $ZSHBINPATH ]; then
 fi
 
 cd $CURDIR
+
+
