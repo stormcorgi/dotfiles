@@ -1,4 +1,7 @@
 #!/bin/sh
+CURDIR=`pwd`
+script_dir=$(cd $(dirname $0); pwd)
+cd $script_dir
 
 ## vim section
 # vim dotfiles
@@ -32,5 +35,4 @@ fi
 echo "vim initialize section done!"
 
 cd $CURDIR
-
 
