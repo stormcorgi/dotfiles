@@ -110,3 +110,6 @@ let g:netrw_sizestyle="H"
 let g:netrw_timefmt="%Y/%m/%d(%a) %H:%M:%S"
 " プレビューウィンドウを垂直分割で表示する
 let g:netrw_preview=1
+
+" sudoになり忘れた時につかうやつ
+cmap w!! w !sudo tee > /dev/null %
