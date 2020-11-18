@@ -5,22 +5,22 @@ set -eu
 
 ## functions
 # is this ARM?
-is_arm () {
-    grep --quiet "^model name\s*:\s*ARMv" /proc/cpuinfo 2>&1 > /dev/null
+is_arm() {
+    grep --quiet "^model name\s*:\s*ARMv" /proc/cpuinfo 2>&1 >/dev/null
     return $?
 }
 
 ## main
 # if peco installed, then nothing to do.
-if type "peco" > /dev/null 2>&1; then
+if type "peco" >/dev/null 2>&1; then
     :
 fi
 
 # get latest version tag
 latest=$(
-curl -fsSI https://github.com/peco/peco/releases/latest |
-    tr -d '\r'| 
-    awk -F'/' '/^location:/{print $NF}'
+    curl -fsSI https://github.com/peco/peco/releases/latest |
+        tr -d '\r' |
+        awk -F'/' '/^location:/{print $NF}'
 )
 
 # if latest is null, then nothing to do.
@@ -28,7 +28,7 @@ curl -fsSI https://github.com/peco/peco/releases/latest |
 
 URLBase="https://github.com/peco/peco/releases/download/${latest}"
 
-if is_arm ; then
+if is_arm; then
     #FIXME: currently, don't verify arm or arm64
     URL="${URLBase}/peco_linux_arm.tar.gz"
     TGT="peco_linux_arm/peco"
@@ -39,7 +39,7 @@ fi
 
 echo $URL
 
-curl -fsSL $URL | tar -xz --to-stdout $TGT > /tmp/peco
+curl -fsSL $URL | tar -xz --to-stdout $TGT >/tmp/peco
 chmod +x /tmp/peco
 sudo mv /tmp/peco /usr/local/bin/peco
 

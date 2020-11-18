@@ -8,20 +8,23 @@
 # - figlet(for zlogin)
 # - peco(better cd / Ctrl-R)
 
-script_dir=$(cd $(dirname $0); pwd)
+script_dir=$(
+    cd $(dirname $0)
+    pwd
+)
 CURDIR=$PWD
 
 cd $script_dir
 
 # install dependency
 ## apt
-type apt > /dev/null 2>&1 
+type apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     yes | sudo apt install zsh git curl vim cowsay figlet peco
 fi
 
 ## apt
-type yum > /dev/null 2>&1 
+type yum >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     yes | sudo yum install -y epel-release
     yes | sudo yum update
@@ -38,12 +41,12 @@ fi
 /bin/bash ./peco_installer.sh
 
 # english -> japanese dictionary data set.
-if [ ! -e ~/.dict/ ];then
+if [ ! -e ~/.dict/ ]; then
     mkdir -p ~/.dict/
     cd ~/.dict/
     curl -s -O http://www.namazu.org/%7Etsuchiya/sdic/data/gene95.tar.gz
     tar xzf ./gene95.tar.gz
-    nkf gene.txt > gene-utf8.txt
+    nkf gene.txt >gene-utf8.txt
     rm -f gene.txt gene95.tar.gz readme.txt
     cd $CURDIR
 fi
@@ -58,5 +61,3 @@ if [ $SHELL != $ZSHBINPATH ]; then
 fi
 
 cd $CURDIR
-
-
