@@ -29,17 +29,7 @@ if [ $? -eq 0 ]; then
 fi
 
 ## zsh section
-# add submodule
-git submodule update --init --recursive
-# override zprezto dotfiles
-ln -sf $script_dir/zprezto ~/.zprezto
-# prezto symlink in ~/
-setopt EXTENDED_GLOB
-for rcfile in "$script_dir"/dotfiles/zsh/*(.N); do
-     ln -sf "$rcfile" "$script_dir/.zprezto/runcoms/${rcfile:t}"
-     ln -sf "$rcfile" "$script_dir/.${rcfile:t}"
-done
-echo "zsh initialize section done!"
+/bin/zsh ./zsh_setup.sh
 
 ## vim section
 /bin/sh ./vim_setup.sh
