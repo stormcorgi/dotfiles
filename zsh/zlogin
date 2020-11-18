@@ -38,4 +38,5 @@ if [[ -o INTERACTIVE && -t 2 ]]; then
       /usr/local/bin/weather
   fi
 
-  fi >&2
+fi >&2
+
