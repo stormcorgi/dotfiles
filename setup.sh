@@ -32,7 +32,7 @@ fi
 /bin/zsh ./zsh_setup.sh
 
 ## vim section
-/bin/sh ./vim_setup.sh
+/bin/bash ./vim_setup.sh
 
 ## peco section
 /bin/bash ./peco_installer.sh

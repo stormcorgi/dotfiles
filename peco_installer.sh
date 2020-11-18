@@ -1,26 +1,46 @@
 #!/bin/bash
-# needed sudo
+# need sudo
 
 set -eu
 
-# peco installed?
+## functions
+# is this ARM?
+is_arm () {
+    grep --quiet "^model name\s*:\s*ARMv" /proc/cpuinfo 2>&1 > /dev/null
+    return $?
+}
+
+## main
+# if peco installed, then nothing to do.
 if type "peco" > /dev/null 2>&1; then
     :
-else
-    latest=$(
-    curl -fsSI https://github.com/peco/peco/releases/latest |
-        tr -d '\r'| 
-        awk -F'/' '/^location:/{print $NF}'
+fi
+
+# get latest version tag
+latest=$(
+curl -fsSI https://github.com/peco/peco/releases/latest |
+    tr -d '\r'| 
+    awk -F'/' '/^location:/{print $NF}'
     )
 
-    : ${latest:?}
+# if latest is null, then nothing to do.
+: ${latest:?}
 
-    curl -fsSL "https://github.com/peco/peco/releases/download/${latest}/peco_linux_amd64.tar.gz" |
-        tar -xz --to-stdout peco_linux_amd64/peco > /tmp/peco
+URLBase="https://github.com/peco/peco/releases/download/${latest}"
 
-    chmod +x /tmp/peco
-
-    sudo mv /tmp/peco /usr/local/bin/peco
-
-    peco --version
+if is_arm ; then
+    #FIXME: currently, don't verify arm or arm64
+    URL="${URLBase}/peco_linux_arm.tar.gz"
+    TGT="peco_linux_arm/peco"
+else
+    URL="${URLBase}/peco_linux_amd64.tar.gz"
+    TGT="peco_linux_amd64/peco"
 fi
+
+echo $URL
+
+curl -fsSL $URL | tar -xz --to-stdout $TGT > /tmp/peco
+chmod +x /tmp/peco
+sudo mv /tmp/peco /usr/local/bin/peco
+
+peco --version
