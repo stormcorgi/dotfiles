@@ -42,7 +42,7 @@ done
 echo "zsh initialize section done!"
 
 ## vim section
-/bin/sh ./vim-setup.sh
+/bin/sh ./vim_setup.sh
 
 # english -> japanese dictionary data set.
 if [ ! -e ~/.dict/ ];then
