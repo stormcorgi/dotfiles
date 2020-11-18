@@ -23,8 +23,9 @@ if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
     echo "$HOME/.vim/bundle/Vundle.vim not fonud. installing..."
     mkdir -p ~/.vim/bundle
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    vim +PluginInstall +qall
 fi
+# plugin check
+vim +PluginInstall +qall
 echo "Vundle install done."
 
 # Vim colorsheme installation

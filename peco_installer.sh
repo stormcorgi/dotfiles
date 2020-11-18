@@ -14,7 +14,7 @@ is_arm() {
 ## main
 # if peco installed, then nothing to do.
 if type "peco" >/dev/null 2>&1; then
-    :
+    exit 0
 fi
 
 # get latest version tag
@@ -25,8 +25,11 @@ latest=$(
         awk -F'/' '/^location:/{print $NF}'
 )
 
-# if latest is null, then nothing to do.
-: "${latest:?}"
+# if latest is null, then nothing to do. something wrong.
+if [ -n "$latest" ]; then
+    echo "Can't get peco's latest tag."
+    exit-1
+fi
 
 URLBase="https://github.com/peco/peco/releases/download/${latest}"
 
