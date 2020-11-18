@@ -1,5 +1,8 @@
 #!/bin/zsh
-script_dir=$(cd $(dirname $0); pwd)
+script_dir=$(
+    cd $(dirname $0)
+    pwd
+)
 CURDIR=$PWD
 
 cd $script_dir
@@ -24,5 +27,3 @@ done
 echo "zsh initialize section done!"
 
 cd $CURDIR
-
-

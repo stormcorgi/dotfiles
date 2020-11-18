@@ -1,21 +1,21 @@
-cd ~
+Set-Location ~
 
 # Tips
 function myman {
-    echo "commands : pybozu, punch, sakura, sudo, hosts, myman"
-    echo "peco : pcd(peco-cd), psl(peco-select), open "
-    echo "don : post tl fav (all commands exec via altair)"
+    Write-Output "commands : pybozu, punch, sakura, sudo, hosts, myman"
+    Write-Output "peco : pcd(peco-cd), psl(peco-select), open "
+    Write-Output "don : post tl fav (all commands exec via altair)"
 }
 myman
 
-set-alias sakura ("C:\Program Files (x86)\sakura\sakura.exe")
-set-alias open invoke-item
+Set-Alias sakura ("C:\Program Files (x86)\sakura\sakura.exe")
+Set-Alias open invoke-item
 
-if ($PSVersionTable.PSVersion.Major -eq 7){
-  & Import-Module posh-git
-  & Import-Module oh-my-posh
-  Set-Theme Powerline
-  Set-Item env:LANG -Value ja_JP.UTF-8
+if ($PSVersionTable.PSVersion.Major -eq 7) {
+    & Import-Module posh-git
+    & Import-Module oh-my-posh
+    Set-Theme Powerline
+    Set-Item env:LANG -Value ja_JP.UTF-8
 }
 
 function pcd($path) {
@@ -23,10 +23,10 @@ function pcd($path) {
     $utf8 = [System.Text.Encoding]::GetEncoding("utf-8")
     $OutputEncoding = $utf8
     [System.Console]::OutputEncoding = $utf8
-    $target = get-childitem -Directory -name -depth 3 $path | peco
+    $target = Get-ChildItem -Directory -Name -Depth 3 $path | peco
     [System.Console]::OutputEncoding = $origin
-    echo $($path + $target)
-    cd $($path + $target)
+    Write-Output $($path + $target)
+    Set-Location $($path + $target)
 }
 
 function psl {
@@ -34,13 +34,13 @@ function psl {
     $utf8 = [System.Text.Encoding]::GetEncoding("utf-8")
     $OutputEncoding = $utf8
     [System.Console]::OutputEncoding = $utf8
-    $out = get-childitem -file -name -depth 4 | peco
+    $out = Get-ChildItem -File -Name -Depth 4 | peco
     [System.Console]::OutputEncoding = $origin
     return $out
 }
 
 
-function hosts {start notepad C:\Windows\System32\drivers\etc\hosts -verb runas}
+function hosts { Start-Process notepad C:\Windows\System32\drivers\etc\hosts -Verb runas }
 
 function post($text) {
     ssh altair /home/motcha/.local/bin/toot post $text
@@ -55,8 +55,8 @@ function fav() {
     $utf8 = [System.Text.Encoding]::GetEncoding("utf-8")
     $OutputEncoding = $utf8
     [System.Console]::OutputEncoding = $utf8
-    $text = ssh altair /home/motcha/.local/bin/toot notifications 
-    echo $text | less
+    $text = ssh altair /home/motcha/.local/bin/toot notifications
+    Write-Output $text | less
     [System.Console]::OutputEncoding = $origin
 }
 
