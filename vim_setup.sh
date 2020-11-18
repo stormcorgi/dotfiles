@@ -1,14 +1,14 @@
 #!/bin/sh
 CURDIR=$(pwd)
 script_dir=$(
-    cd $(dirname $0)
+    cd "$(dirname $0)" || exit
     pwd
 )
-cd $script_dir
+cd "$script_dir" || exit
 
 ## vim section
 # vim dotfiles
-ln -sf $script_dir/vim/vimrc ~/.vimrc
+ln -sf "$script_dir"/vim/vimrc ~/.vimrc
 # create vim undo / swp / backup target dirctory
 if [ ! -e ~/.vim/undo ]; then
     echo "created undo/swp/backup target dir: ~/.vim/undo"
@@ -20,7 +20,7 @@ fi
 # vim-lsp require ~/.cache/tmp
 mkdir -p ~/.cache/tmp
 if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
-    echo "~/.vim/bundle/Vundle.vim not fonud. installing..."
+    echo "$HOME/.vim/bundle/Vundle.vim not fonud. installing..."
     mkdir -p ~/.vim/bundle
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
     vim +PluginInstall +qall
@@ -37,4 +37,4 @@ fi
 
 echo "vim initialize section done!"
 
-cd $CURDIR
+cd "$CURDIR" || exit

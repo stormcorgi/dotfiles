@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # need sudo
 
 set -eu
@@ -6,7 +7,7 @@ set -eu
 ## functions
 # is this ARM?
 is_arm() {
-    grep --quiet "^model name\s*:\s*ARMv" /proc/cpuinfo 2>&1 >/dev/null
+    grep --quiet "^model name\s*:\s*ARMv" /proc/cpuinfo >/dev/null 2>&1
     return $?
 }
 
@@ -17,6 +18,7 @@ if type "peco" >/dev/null 2>&1; then
 fi
 
 # get latest version tag
+
 latest=$(
     curl -fsSI https://github.com/peco/peco/releases/latest |
         tr -d '\r' |
@@ -24,7 +26,7 @@ latest=$(
 )
 
 # if latest is null, then nothing to do.
-: ${latest:?}
+: "${latest:?}"
 
 URLBase="https://github.com/peco/peco/releases/download/${latest}"
 
@@ -37,9 +39,9 @@ else
     TGT="peco_linux_amd64/peco"
 fi
 
-echo $URL
+echo "$URL"
 
-curl -fsSL $URL | tar -xz --to-stdout $TGT >/tmp/peco
+curl -fsSL "$URL" | tar -xz --to-stdout $TGT >/tmp/peco
 chmod +x /tmp/peco
 sudo mv /tmp/peco /usr/local/bin/peco
 
