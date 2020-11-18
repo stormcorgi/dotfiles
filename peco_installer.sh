@@ -21,7 +21,7 @@ latest=$(
 curl -fsSI https://github.com/peco/peco/releases/latest |
     tr -d '\r'| 
     awk -F'/' '/^location:/{print $NF}'
-    )
+)
 
 # if latest is null, then nothing to do.
 : ${latest:?}

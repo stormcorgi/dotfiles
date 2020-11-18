@@ -7,30 +7,35 @@
 
 # Execute code that does not affect the current session in the background.
 {
-  # Compile the completion dump to increase startup speed.
-  zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
-  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-    zcompile "$zcompdump"
-  fi
+    # Compile the completion dump to increase startup speed.
+    zcompdump="${ZDOTDIR:-$HOME}/.zcompdump"
+    if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
+        zcompile "$zcompdump"
+    fi
 } &!
 
 # Execute code only if STDERR is bound to a TTY.
 if [[ -o INTERACTIVE && -t 2 ]]; then
 
-  figlet `hostname`
+    figlet `hostname`
 
   # Print a random, hopefully interesting, adage.
   if (( $+commands[fortune] )); then
-    cowsay -f tux `fortune -s`
-    print
+      cowsay -f tux `fortune -s`
+      print
   fi
 
   # update dotfiles 33%
   if [ $(($RANDOM % 3)) -eq 0  ]; then
-    cd ~/dotfiles
-    echo "dot files update check..."
-    git pull
-    cd ~
+      cd ~/dotfiles
+      echo "dot files update check..."
+      git pull
+      cd ~
   fi
 
-fi >&2
+  # my command!
+  if [ -e "/usr/local/bin/weather" ]; then
+      /usr/local/bin/weather
+  fi
+
+  fi >&2
