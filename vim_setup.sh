@@ -10,8 +10,8 @@ ln -sf $script_dir/vim/vimrc ~/.vimrc
 if [ ! -e ~/.vim/undo ];then
     echo "created undo/swp/backup target dir: ~/.vim/undo"
     mkdir -p ~/.vim/undo
+    echo "tmpdir(~/.vim/undo) generated."
 fi
-echo "tmpdir(~/.vim/undo) generated."
 
 # Vundle install
 # vim-lsp require ~/.cache/tmp

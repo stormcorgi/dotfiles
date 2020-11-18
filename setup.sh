@@ -34,6 +34,9 @@ fi
 ## vim section
 /bin/sh ./vim_setup.sh
 
+## peco section
+/bin/bash ./peco_installer.sh
+
 # english -> japanese dictionary data set.
 if [ ! -e ~/.dict/ ];then
     mkdir -p ~/.dict/
