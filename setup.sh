@@ -4,6 +4,7 @@
 # - git
 # - curl
 # - vim
+# - jq
 # - cowsay(for zlogin)
 # - figlet(for zlogin)
 # - peco(better cd / Ctrl-R)
@@ -20,7 +21,7 @@ cd $script_dir
 ## apt
 type apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-    yes | sudo apt install zsh git curl vim cowsay figlet peco
+    yes | sudo apt install zsh git curl vim cowsay figlet peco jq
 fi
 
 ## apt
@@ -28,7 +29,7 @@ type yum >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     yes | sudo yum install -y epel-release
     yes | sudo yum update
-    yes | sudo yum -y install zsh git curl vim cowsay figlet
+    yes | sudo yum -y install zsh git curl vim cowsay figlet jq
 fi
 
 ## zsh section
