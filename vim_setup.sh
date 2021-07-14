@@ -16,6 +16,14 @@ if [ ! -e ~/.vim/undo ]; then
     echo "tmpdir(~/.vim/undo) generated."
 fi
 
+# Vim colorsheme installation
+if [ ! -e ~/.vim/colors ]; then
+    mkdir -p ~/.vim/colors
+fi
+git clone https://github.com/tomasr/molokai /tmp/molokai
+mv /tmp/molokai/colors/molokai.vim ~/.vim/colors/
+rm -rf /tmp/molokai
+
 # Vundle install
 # vim-lsp require ~/.cache/tmp
 mkdir -p ~/.cache/tmp
@@ -28,13 +36,6 @@ fi
 vim +PluginInstall +qall
 echo "Vundle install done."
 
-# Vim colorsheme installation
-if [ ! -e ~/.vim/colors ]; then
-    mkdir -p ~/.vim/colors
-    git clone https://github.com/tomasr/molokai /tmp/molokai
-    mv /tmp/molokai/colors/molokai.vim ~/.vim/colors/
-    rm -rf /tmp/molokai
-fi
 
 echo "vim initialize section done!"
 

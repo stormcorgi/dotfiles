@@ -13,7 +13,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'osyo-manga/vim-over'
-Plugin 'wakatime/vim-wakatime'
+"Plugin 'wakatime/vim-wakatime'
 
 call vundle#end()
 filetype plugin indent on
