@@ -18,27 +18,38 @@ if type "peco" >/dev/null 2>&1; then
 fi
 
 # get latest version tag
+# latest=$(
+#     curl -fsSI https://github.com/peco/peco/releases/latest |
+#         tr -d '\r' |
+#         awk -F'/' '/^location:/{print $NF}'
+# )
 
-latest=$(
-    curl -fsSI https://github.com/peco/peco/releases/latest |
-        tr -d '\r' |
-        awk -F'/' '/^location:/{print $NF}'
-)
+# # if latest is null, then nothing to do. something wrong.
+# if [ -n "$latest" ]; then
+#     echo "Can't get peco's latest tag."
+#     exit-1
+# fi
+# echo $latest
 
-# if latest is null, then nothing to do. something wrong.
-if [ -n "$latest" ]; then
-    echo "Can't get peco's latest tag."
-    exit-1
-fi
-
-URLBase="https://github.com/peco/peco/releases/download/${latest}"
+# grab latest URL
+# URLBase="https://github.com/peco/peco/releases/download/${latest}"
 
 if is_arm; then
     #FIXME: currently, don't verify arm or arm64
-    URL="${URLBase}/peco_linux_arm.tar.gz"
+    URL=$(
+    curl -s https://api.github.com/repos/peco/peco/releases/latest |
+    jq -r '.assets[].browser_download_url' |
+    grep linux  | grep arm
+    )
+    # URL="${URLBase}peco_linux_arm.tar.gz"
     TGT="peco_linux_arm/peco"
 else
-    URL="${URLBase}/peco_linux_amd64.tar.gz"
+    # URL="${URLBase}peco_linux_amd64.tar.gz"
+    URL=$(
+    curl -s https://api.github.com/repos/peco/peco/releases/latest |
+    jq -r '.assets[].browser_download_url' |
+    grep linux | grep amd64
+    )
     TGT="peco_linux_amd64/peco"
 fi
 
