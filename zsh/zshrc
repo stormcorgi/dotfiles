@@ -81,6 +81,9 @@ alias tl='toot timeline -r -1'
 alias fav='toot notifications | less'
 alias post='toot post'
 
+# get-command
+alias gcm="echo $PATH | tr ':' '\n' | xargs -I{} find {} -type f -executable -printf '%f\n' | sort -u"
+
 
 # 以下は末尾に配置すること。
 # ~/.zshrc.localが存在するときはそちらでオーバーライド
