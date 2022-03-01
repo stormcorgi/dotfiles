@@ -6,22 +6,9 @@ on:
 
 jobs:
   shellcheck:
+    name: Shellcheck
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-      # ベースブランチと比較するため fetch-depth=0 ですべてのブランチを取得します.
-      #  (actions/checkout@v2以降 fetch-depth=1 がデフォルト)
-      with:
-        fetch-depth: 0
-    - name: Check scripts with shellcheck
-      env:
-        EXCLUDE_OPTS: SC2086,SC2001
-      run: |
-        git diff origin/${GITHUB_BASE_REF}..origin/${GITHUB_HEAD_REF} \
-          --diff-filter=AM \
-          --name-only -- '*.sh' \
-          | while read script ; do \
-              shellcheck ${EXCLUDE_OPTS:+-e ${EXCLUDE_OPTS}} $script || \
-              touch error.$$ ; \
-            done
-        test ! -e error.$$
+    - uses: actions/checkout@v2
+    - name: Run ShellCheck
+      uses: ludeeus/action-shellcheck@master
