@@ -21,15 +21,15 @@ cd $script_dir
 ## apt
 type apt >/dev/null 2>&1
 if [ $? -eq 0 ]; then
-    yes | sudo apt install zsh git curl vim cowsay figlet peco jq
+    yes | sudo apt install zsh git curl vim cowsay figlet peco jq nkf
 fi
 
-## apt
+## yum
 type yum >/dev/null 2>&1
 if [ $? -eq 0 ]; then
     yes | sudo yum install -y epel-release
     yes | sudo yum update
-    yes | sudo yum -y install zsh git curl vim cowsay figlet jq
+    yes | sudo yum -y install zsh git curl vim cowsay figlet jq nkf
 fi
 
 ## zsh section
