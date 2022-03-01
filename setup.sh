@@ -8,6 +8,7 @@
 # - cowsay(for zlogin)
 # - figlet(for zlogin)
 # - peco(better cd / Ctrl-R)
+# - nkf(for dict)
 
 script_dir=$(
     cd $(dirname $0)
