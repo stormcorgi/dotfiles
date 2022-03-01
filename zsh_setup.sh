@@ -18,8 +18,6 @@ ln -sf $script_dir/zprezto ~/.zprezto
 # prezto symlink in ~/
 setopt EXTENDED_GLOB
 for rcfile in $script_dir/zsh/*(.N); do
-    # echo "$rcfile" "$HOME/.zprezto/runcoms/${rcfile:t}"
-    # echo "$rcfile" "$HOME/.${rcfile:t}"
     ln -sf "$rcfile" "$HOME/.zprezto/runcoms/${rcfile:t}"
     ln -sf "$rcfile" "$HOME/.${rcfile:t}"
 done

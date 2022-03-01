@@ -7,13 +7,12 @@ script_dir=$(
 cd "$script_dir" || exit
 
 ## vim section
-# vim dotfiles
 ln -sf "$script_dir"/vim/vimrc ~/.vimrc
 # create vim undo / swp / backup target dirctory
 if [ ! -e ~/.vim/undo ]; then
-    echo "created undo/swp/backup target dir: ~/.vim/undo"
+    echo "create tmpdir(~/.vim/undo) for undo/swp/backup"
     mkdir -p ~/.vim/undo
-    echo "tmpdir(~/.vim/undo) generated."
+    echo "tmpdir generated."
 fi
 
 # Vim colorsheme installation
@@ -28,14 +27,14 @@ rm -rf /tmp/molokai
 # vim-lsp require ~/.cache/tmp
 mkdir -p ~/.cache/tmp
 if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
-    echo "$HOME/.vim/bundle/Vundle.vim not fonud. installing..."
+    echo "$HOME/.vim/bundle/Vundle.vim is not fonud. installing..."
     mkdir -p ~/.vim/bundle
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
+
 # plugin check
 vim +PluginInstall +qall
-echo "Vundle install done."
-
+echo "Vundle plugins are installed."
 
 echo "vim initialize section done!"
 
