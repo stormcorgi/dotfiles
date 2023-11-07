@@ -13,7 +13,16 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'osyo-manga/vim-over'
-"Plugin 'wakatime/vim-wakatime'
+Plugin 'folke/tokyonight.nvim'
+
+Plugin 'lambdalisue/fern.vim'
+Plugin 'lambdalisue/fern-git-status.vim'
+Plugin 'lambdalisue/nerdfont.vim'                " アイコン一般
+Plugin 'lambdalisue/fern-renderer-nerdfont.vim'  " fernでアイコンを表示する
+Plugin 'lambdalisue/glyph-palette.vim'           " アイコンに色をつける
+
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'nvim-telescope/telescope.nvim'
 
 call vundle#end()
 filetype plugin indent on

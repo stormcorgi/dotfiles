@@ -42,17 +42,6 @@ fi
 ## peco section
 /bin/bash ./peco_installer.sh
 
-# english -> japanese dictionary data set.
-if [ ! -e ~/.dict/ ]; then
-    mkdir -p ~/.dict/
-    cd ~/.dict/
-    curl -s -O http://www.namazu.org/%7Etsuchiya/sdic/data/gene95.tar.gz
-    tar xzf ./gene95.tar.gz
-    nkf gene.txt >gene-utf8.txt
-    rm -f gene.txt gene95.tar.gz readme.txt
-    cd $CURDIR
-fi
-
 # create local zsh file.
 touch ~/.zshrc.local
 

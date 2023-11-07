@@ -1,5 +1,5 @@
 " vim一般
-colorscheme molokai
+" colorscheme tokyonight
 set encoding=utf-8
 scriptencoding utf-8
 filetype plugin indent on
@@ -18,8 +18,8 @@ set softtabstop=4
 set expandtab
 set tabstop=4
 set smarttab
-" ヤンクやペースト時クリップボードの内容を使用する
-set clipboard=unnamed,autoselect
+
+set clipboard=unnamed,unnamedplus
 " バッファの自動保存 読み込み専用、ファイル名無しでは自動保存時に警告が出る
 " 無視したいので関数でラップ
 set autowrite

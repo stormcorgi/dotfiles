@@ -3,9 +3,10 @@ autocmd FocusGained * set transparency=230
 autocmd FocusLost * set transparency=180
 
 " カラースキーム、フォント指定
-colorscheme monokai
+" colorscheme monokai
 " set guifont=MigMix\ 1M\ Regular:h12:cSHIFTJIS
-set guifont=Ricty\ Diminished\ for\ Powerline:h12:cSHIFTJIS
+" set guifont=Ricty\ Diminished\ for\ Powerline:h12:cSHIFTJIS
+" set guifont=HackGen\ Console\ NF:h12:cSHIFTJIS
 
 " Ricty Diminishedを使う場合アンチエイリアスの設定が必要、下記でアンチエイリアスの設定となる
 set renderoptions=type:directx,renmode:5

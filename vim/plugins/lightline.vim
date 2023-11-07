@@ -1,9 +1,10 @@
 " プラグイン設定
 " LightLine
+        " \ 'separator': { 'left': \u2b80, 'right': \u2b82 },
 let g:lightline = {
-        \ 'colorscheme': 'wombat',
-        \ 'separator': { 'left': "\u2b80", 'right': "\u2b82" },
-        \ 'subseparator': { 'left': "\u2b81", 'right': "\u2b83" },
+        \ 'colorscheme': 'PaperColor',
+        \ 'separator': { 'left': "\ue0b0", 'right': "\ue0b2" },
+        \ 'subseparator': { 'left': "\ue0b0", 'right': "\ue0b3" },
         \ 'mode_map': {'c': 'NORMAL'},
         \ 'active': {
         \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ]
