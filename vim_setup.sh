@@ -15,27 +15,15 @@ if [ ! -e ~/.vim/undo ]; then
     echo "tmpdir generated."
 fi
 
-# Vim colorsheme installation
-if [ ! -e ~/.vim/colors ]; then
-    mkdir -p ~/.vim/colors
-fi
-git clone https://github.com/tomasr/molokai /tmp/molokai
-mv /tmp/molokai/colors/molokai.vim ~/.vim/colors/
-rm -rf /tmp/molokai
+# required
+mv ~/.config/nvim{,.bak}
 
-# Vundle install
-# vim-lsp require ~/.cache/tmp
-mkdir -p ~/.cache/tmp
-if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
-    echo "$HOME/.vim/bundle/Vundle.vim is not fonud. installing..."
-    mkdir -p ~/.vim/bundle
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
+# optional but recommended
+mv ~/.local/share/nvim{,.bak}
+mv ~/.local/state/nvim{,.bak}
+mv ~/.cache/nvim{,.bak}
 
-# plugin check
-vim +PluginInstall +qall
-echo "Vundle plugins are installed."
-
-echo "vim initialize section done!"
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+rm -rf ~/.config/nvim/.git
 
 cd "$CURDIR" || exit
