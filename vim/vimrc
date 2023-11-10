@@ -1,6 +1,0 @@
-set runtimepath+=~/dotfiles/vim
-colorscheme darkblue
-runtime! plugins/*.vim
-runtime! rc/*.vim
-
-
