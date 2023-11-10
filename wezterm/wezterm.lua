@@ -41,21 +41,10 @@ config.color_scheme = "Embers (dark)(terminal.sexy)"
 config.font_size = 14
 config.hide_tab_bar_if_only_one_tab = true
 config.window_background_opacity = 0.75
--- background
-local dimmer = { brightness = 0.025 }
-config.background = {
-	{
-		source = {
-			File = "/Users/n-saito/.config/wezterm/bg_lucy.jpg",
-		},
-		width = "100%",
-		repeat_x = "NoRepeat",
-		vertical_align = "Bottom",
-		repeat_y_size = "100%",
-		hsb = dimmer,
-		attachment = { Parallax = 0.1 },
-	},
-}
+
+-- loading local configurationso
+local localconf = require("localconf")
+localconf.apply_to_config(config)
 
 -- and finally, return the configuration to wezterm
 return config
