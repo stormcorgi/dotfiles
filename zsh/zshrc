@@ -27,11 +27,6 @@ prompt clint
 
 cd ~
 
-# offline dictionary
-function dict() {
-    grep $1 ~/.dict/gene-utf8.txt -A 1 -wi --color
-}
-
 # history search (Ctrl-R)peco settings
 function peco-history-selection() {
     BUFFER=`history -n 1 | tac | awk '!a[$0]++' | peco`
@@ -65,7 +60,6 @@ fi
 # my man
 function myman() {
     echo "my commands"
-    echo " - dict : offline English -> Japanese dictionary"
     echo " - myman : show this message"
     echo "shortcut keys"
     echo "<Ctrl-R> : peco zsh_history search"
